@@ -131,8 +131,8 @@ const App: React.FC = () => {
                 </div>
                 <BottomNav activeView={activeView} onNavigate={setActiveView} />
             </div>
-            </>
         </div>
+        </>
     );
 };
 
