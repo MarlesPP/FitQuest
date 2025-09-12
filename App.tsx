@@ -111,6 +111,7 @@ const App: React.FC = () => {
         : '';
 
     return (
+        <h1>API Key Status: {import.meta.env.VITE_GEMINI_API_KEY ? "Loaded Successfully" : "!!! NOT FOUND !!!"}</h1>
         <div className="bg-gray-900 text-gray-200 min-h-screen font-sans">
             <div className={`fixed inset-0 bg-cover bg-center transition-opacity duration-1000 ${backgroundClass}`}></div>
             <div className="relative min-h-screen bg-black/60 backdrop-blur-sm">
