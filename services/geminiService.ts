@@ -1,7 +1,5 @@
-
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Workout, DifficultyLevel, EquipmentOption, WorkoutType } from '../types';
-
 
 const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 if (!apiKey) {
@@ -38,11 +36,10 @@ export const generateWorkout = async (
     `;
 
     try {
-        
         const model = genAI.getGenerativeModel({
-          model: "gemini-1.5-flash", 
+          model: "gemini-1.5-flash",
           generationConfig: {
-            responseMimeType: "application/json", /
+            responseMimeType: "application/json" 
           },
         });
 
@@ -56,7 +53,6 @@ export const generateWorkout = async (
 
         const workoutData = JSON.parse(jsonText);
         
-      
         workoutData.level = difficulty;
         workoutData.workoutType = workoutType;
 
@@ -64,7 +60,6 @@ export const generateWorkout = async (
 
     } catch (error) {
         console.error("Error generating workout from Gemini:", error);
-
         if (error instanceof SyntaxError) {
              throw new Error("Failed to parse the JSON response from the API. The response was not valid JSON.");
         }
