@@ -1,10 +1,10 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Workout, DifficultyLevel, EquipmentOption, WorkoutType } from '../types';
 
-const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-
+// 🔑 Asegúrate de que la clave existe
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY ?? "";
 if (!apiKey) {
-  throw new Error("❌ ERROR: VITE_GEMINI_API_KEY no está definida en Vercel o .env");
+  console.error("❌ ERROR: VITE_GEMINI_API_KEY no está definida en Vercel o .env");
 }
 
 const genAI = new GoogleGenerativeAI(apiKey);
