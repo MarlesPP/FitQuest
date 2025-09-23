@@ -104,4 +104,22 @@ const Achievements: React.FC<AchievementsProps> = ({ unlockedAchievements, total
           {content.subtitle || 'Desbloquea logros completando entrenamientos'}
         </p>
         <p className="text-gray-300 mt-2">
-          {c
+          {content.totalXP || 'Puntos Totales'}: {totalXP}
+        </p>
+      </motion.div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {content.achievements?.map((achievement: Achievement) => (
+          <AchievementCard
+            key={achievement?.id || Math.random()}
+            achievement={achievement}
+            isUnlocked={unlockedAchievements.includes(achievement?.id || '')}
+            theme={theme}
+          />
+        )) || <p className="text-gray-400">No hay logros disponibles.</p>}
+      </div>
+    </div>
+  );
+};
+
+export default Achievements;
